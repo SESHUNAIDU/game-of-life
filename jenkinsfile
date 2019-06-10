@@ -4,8 +4,11 @@ node('MVN'){
         git branch: 'dev', url: 'https://github.com/SESHUNAIDU/game-of-life.git'     
     }
     stage('BUILD'){
-        sh 'mvn package'
+        sh 'mvn install'
     }
+	stage('DUMMY'){
+		sh 'pwd'
+	}
 	stage('ARCHIVE'){
 		archive 'target/*.jar'
 		junit 'target/surefire-reports/*.xml'
